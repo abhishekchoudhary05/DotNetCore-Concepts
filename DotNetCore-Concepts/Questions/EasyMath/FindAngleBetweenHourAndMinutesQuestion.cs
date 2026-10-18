@@ -1,4 +1,4 @@
-namespace InterviewPrepration.Questions;
+namespace DotNetCore_Concepts.Questions.EasyMath;
 
 internal static class FindAngleBetweenHourAndMinutesQuestion
 {
