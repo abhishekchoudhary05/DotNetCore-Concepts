@@ -23,8 +23,4 @@
     <ProjectReference Include="..\DotNetCore-Concepts\DotNetCore-Concepts.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Questions\Array\" />
-  </ItemGroup>
-
 </Project>

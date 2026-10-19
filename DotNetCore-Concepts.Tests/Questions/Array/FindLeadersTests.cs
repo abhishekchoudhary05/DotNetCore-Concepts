@@ -1,6 +1,6 @@
 using DotNetCore_Concepts.Questions.Array;
 
-namespace DotNetCore_Concepts.Tests.Array
+namespace DotNetCore_Concepts.Tests.Questions.Array
 {
     public class FindLeadersTests
     {
