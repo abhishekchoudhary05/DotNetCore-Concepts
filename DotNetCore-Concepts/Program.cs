@@ -1,5 +1,4 @@
-﻿using DotNetCore_Concepts.Models;
-using DotNetCore_Concepts.Questions.LinkList;
+﻿using DotNetCore_Concepts.Questions.Array;
 
 namespace DotNetCore_Concepts
 {
@@ -7,16 +6,8 @@ namespace DotNetCore_Concepts
     {
         static void Main(string[] args)
         {
-            Node head = new Node(1);
-            head.next = new Node(3);
-            head.next.next = new Node(4);
-
-            head.next.next.next = head.next;
-
-            if (FindCycles.DetectCycles(head))
-                Console.WriteLine("true");
-            else
-                Console.WriteLine("false");
+            int[] arr = [2, 1, 4, 0, 5, 6];
+            Console.WriteLine("Missing number is : " + MissingNumber.FindNumber(arr));
         }
     }
 }
