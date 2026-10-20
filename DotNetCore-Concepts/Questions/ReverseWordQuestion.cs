@@ -2,12 +2,12 @@ using System.Text;
 
 namespace InterviewPrepration.Questions;
 
+/// <summary>Contains a routine for reversing the characters of each space-delimited word.</summary>
 internal static class ReverseWordQuestion
 {
+    /// <summary>Writes the input with each word's characters reversed and word positions preserved.</summary>
     internal static void ReverseWord(string str)
     {
-        // "Welcome to Csharp corner",  "Welcome", "     "
-
         ArgumentNullException.ThrowIfNull(str);
 
         int startIndex = 0;
@@ -18,6 +18,7 @@ internal static class ReverseWordQuestion
         {
             if (str[startIndex] == ' ')
             {
+                // A space closes the preceding word; copy that word backward, then keep the separator.
                 int j = startIndex - 1;
                 while (j >= lastIndex)
                 {

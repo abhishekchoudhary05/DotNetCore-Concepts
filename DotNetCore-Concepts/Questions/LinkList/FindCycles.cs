@@ -2,8 +2,10 @@
 
 namespace DotNetCore_Concepts.Questions.LinkList
 {
+    /// <summary>Provides cycle detection for singly linked nodes.</summary>
     internal static class FindCycles
     {
+        /// <summary>Detects a cycle using Floyd's two-pointer algorithm.</summary>
         internal static bool DetectCycles(Node start)
         {
             ArgumentNullException.ThrowIfNull(start, "starting node is null");

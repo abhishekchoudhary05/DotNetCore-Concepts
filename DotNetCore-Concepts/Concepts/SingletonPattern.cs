@@ -1,5 +1,6 @@
 namespace InterviewPrepration.Concepts;
 
+/// <summary>Demonstrates a lazily created singleton instance.</summary>
 internal sealed class SingletonPattern
 {
     private static SingletonPattern? _singletonPattern = null;
@@ -9,6 +10,7 @@ internal sealed class SingletonPattern
 
     }
 
+    /// <summary>Returns the shared instance, creating it on the first call.</summary>
     public static SingletonPattern GetObject()
     {
         if (_singletonPattern == null)

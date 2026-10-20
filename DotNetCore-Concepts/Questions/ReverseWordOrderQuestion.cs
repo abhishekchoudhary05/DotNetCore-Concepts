@@ -2,8 +2,10 @@ using System.Text;
 
 namespace InterviewPrepration.Questions;
 
+/// <summary>Contains a routine for reversing the order of space-delimited words.</summary>
 internal static class ReverseWordOrderQuestion
 {
+    /// <summary>Writes the words from right to left while preserving their character order.</summary>
     internal static void ReverseWordOrder(string str)
     {
         int i;
@@ -16,6 +18,7 @@ internal static class ReverseWordOrderQuestion
         {
             if (str[Start] == ' ')
             {
+                // Copy the word after this separator before moving the end boundary left.
                 i = Start + 1;
                 while (i <= End)
                 {

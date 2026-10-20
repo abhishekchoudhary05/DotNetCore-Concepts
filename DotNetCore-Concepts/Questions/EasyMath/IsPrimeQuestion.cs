@@ -1,7 +1,9 @@
 namespace DotNetCore_Concepts.Questions.EasyMath;
 
+/// <summary>Contains a primality-checking example.</summary>
 internal static class IsPrimeQuestion
 {
+    /// <summary>Writes whether the supplied integer is prime.</summary>
     internal static void IsPrime(int number)
     {
         if (number <= 1)
@@ -11,6 +13,7 @@ internal static class IsPrimeQuestion
         }
 
         int squareRoot = (int)Math.Floor(Math.Sqrt(number));
+        // Any composite number has a factor no greater than its square root.
         for (int i = 2; i <= squareRoot; i++)
         {
             if (number % i == 0)

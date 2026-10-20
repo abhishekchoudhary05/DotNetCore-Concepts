@@ -1,7 +1,9 @@
 namespace InterviewPrepration.Questions;
 
+/// <summary>Finds the second-largest distinct integer in an array.</summary>
 internal static class FindSecondHighestQuestion
 {
+    /// <summary>Tracks the two largest distinct values in one pass.</summary>
     internal static int FindSecondHighest(int[] array)
     {
         ArgumentNullException.ThrowIfNull(array);
@@ -9,6 +11,7 @@ internal static class FindSecondHighestQuestion
         int? highest = null;
         int? secondHighest = null;
 
+        // When a new maximum appears, the previous maximum becomes the second maximum.
         foreach (int item in array)
         {
             if (highest is null || item > highest)
