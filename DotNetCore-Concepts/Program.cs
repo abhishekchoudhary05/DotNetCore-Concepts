@@ -1,4 +1,5 @@
 ﻿using DotNetCore_Concepts.Questions.Array;
+using DotNetCore_Concepts.Concepts;
 
 namespace DotNetCore_Concepts
 {
@@ -8,8 +9,12 @@ namespace DotNetCore_Concepts
         /// <summary>Runs the selected missing-number example.</summary>
         static void Main(string[] args)
         {
-            int[] arr = [2, 1, 4, 0, 5, 6];
-            Console.WriteLine("Missing number is : " + MissingNumber.FindNumber(arr));
+            // int[] arr = [2, 1, 4, 0, 5, 6];
+            // Console.WriteLine("Missing number is : " + MissingNumber.FindNumber(arr));
+
+            MultiThreading multiThreading = new MultiThreading();
+            multiThreading.RunDemo();
         }
     }
 }
+
