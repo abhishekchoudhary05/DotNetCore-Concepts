@@ -15,12 +15,9 @@ namespace DotNetCore_Concepts
             // MultiThreading multiThreading = new MultiThreading();
             // multiThreading.RunDemo();
 
-            int[] arr = [0, 9, 0, -3, 0, 1];
-            int[] result = MoveZeros.MoveZerosTtEnd(arr);
-            foreach (var item in result)
-            {
-                Console.Write(item + " ");
-            }
+            int[] arr = [0, 9, 0, 3, 0, 1];
+            int result = MaximumProfit.FindMaximumProfit(arr);
+            Console.WriteLine(result);
         }
     }
 }
