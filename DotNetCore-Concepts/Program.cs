@@ -12,8 +12,15 @@ namespace DotNetCore_Concepts
             // int[] arr = [2, 1, 4, 0, 5, 6];
             // Console.WriteLine("Missing number is : " + MissingNumber.FindNumber(arr));
 
-            MultiThreading multiThreading = new MultiThreading();
-            multiThreading.RunDemo();
+            // MultiThreading multiThreading = new MultiThreading();
+            // multiThreading.RunDemo();
+
+            int[] arr = [0, 9, 0, -3, 0, 1];
+            int[] result = MoveZeros.MoveZerosTtEnd(arr);
+            foreach (var item in result)
+            {
+                Console.Write(item + " ");
+            }
         }
     }
 }
