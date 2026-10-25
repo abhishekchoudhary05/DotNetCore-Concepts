@@ -1,5 +1,6 @@
 ﻿using DotNetCore_Concepts.Questions.Array;
 using DotNetCore_Concepts.Concepts;
+using DotNetCore_Concepts.Questions.HashMap;
 
 namespace DotNetCore_Concepts
 {
@@ -15,9 +16,12 @@ namespace DotNetCore_Concepts
             // MultiThreading multiThreading = new MultiThreading();
             // multiThreading.RunDemo();
 
-            int[] arr = [0, 9, 0, 3, 0, 1];
-            int result = MaximumProfit.FindMaximumProfit(arr);
-            Console.WriteLine(result);
+            int[] arr = [1, 4, 1, 2, 1, 3, 2, 4];
+            int[] result = TopKFrequentElements.FindElements(arr, 2);
+            foreach (var item in result)
+            {
+                Console.Write(item + " ");
+            }
         }
     }
 }
