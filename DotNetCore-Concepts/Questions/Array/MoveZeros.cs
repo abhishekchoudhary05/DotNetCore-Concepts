@@ -1,36 +1,27 @@
-﻿namespace DotNetCore_Concepts.Questions.Array
+﻿namespace DotNetCore_Concepts.Questions.Array;
+
+internal static class MoveZeros
 {
-    internal static class MoveZeros
+    internal static int[] MoveZerosToEnd(int[] arr)
     {
-        internal static int[] MoveZerosTtEnd(int[] arr)
+        ArgumentNullException.ThrowIfNull(arr);
+
+        int insertPos = 0;
+
+        for (int i = 0; i < arr.Length; i++)
         {
-            ArgumentNullException.ThrowIfNull(arr, "Input array is null");
-
-            // [0,1,0,3,12]
-            int nonZeroIndex = 1;
-            int i = 0;
-            while (i < arr.Length && nonZeroIndex < arr.Length)
+            if (arr[i] != 0)
             {
-                if (arr[i] != 0)
+                if (i != insertPos)
                 {
-                    i++;
-                    nonZeroIndex++;
+                    int temp = arr[insertPos];
+                    arr[insertPos] = arr[i];
+                    arr[i] = temp;
                 }
-                else if (arr[i] == 0 && arr[nonZeroIndex] != 0)
-                {
-                    int temp = arr[i];
-                    arr[i] = arr[nonZeroIndex];
-                    arr[nonZeroIndex] = temp;
-                    i++;
-                    nonZeroIndex++;
-                }
-                else if (arr[nonZeroIndex] == 0)
-                {
-                    nonZeroIndex++;
-                }
+                insertPos++;
             }
-
-            return arr;
         }
+
+        return arr;
     }
 }

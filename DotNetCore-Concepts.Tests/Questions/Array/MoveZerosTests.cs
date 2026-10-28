@@ -19,7 +19,7 @@ public class MoveZerosTests
         int[] input = [0, 1, 0, 3, 12];
         int[] expected = [1, 3, 12, 0, 0];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -34,7 +34,7 @@ public class MoveZerosTests
         int[] input = [];
         int[] expected = [];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
         Assert.Empty(result);
@@ -50,7 +50,7 @@ public class MoveZerosTests
         int[] input = [0];
         int[] expected = [0];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -65,7 +65,7 @@ public class MoveZerosTests
         int[] input = [5];
         int[] expected = [5];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -80,7 +80,7 @@ public class MoveZerosTests
     [InlineData(new int[] { 4, 7 }, new int[] { 4, 7 })]
     public void TwoElementArray_ReturnsExpectedResult(int[] input, int[] expected)
     {
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -94,7 +94,7 @@ public class MoveZerosTests
         int[] input = [1, 2, 3, 4, 5];
         int[] expected = [1, 2, 3, 4, 5];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -108,7 +108,7 @@ public class MoveZerosTests
         int[] input = [0, 0, 0, 0, 0];
         int[] expected = [0, 0, 0, 0, 0];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -122,7 +122,7 @@ public class MoveZerosTests
         int[] input = [1, 2, 3, 0, 0];
         int[] expected = [1, 2, 3, 0, 0];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -136,7 +136,7 @@ public class MoveZerosTests
         int[] input = [0, 0, 0, 1, 2];
         int[] expected = [1, 2, 0, 0, 0];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -149,7 +149,7 @@ public class MoveZerosTests
     [InlineData(new int[] { 1, 0, 2, 0, 3, 0 }, new int[] { 1, 2, 3, 0, 0, 0 })]
     public void AlternatingZerosAndNonZeros_MovesZerosToEnd(int[] input, int[] expected)
     {
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -163,7 +163,7 @@ public class MoveZerosTests
         int[] input = [4, 0, 0, 0, 1, 0, 5];
         int[] expected = [4, 1, 5, 0, 0, 0, 0];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -177,7 +177,7 @@ public class MoveZerosTests
         int[] input = [-1, 0, 3, -5, 0, 0, 2];
         int[] expected = [-1, 3, -5, 2, 0, 0, 0];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Equal(expected, result);
     }
@@ -190,7 +190,7 @@ public class MoveZerosTests
     {
         int[] input = [0, 1, 0, 3, 12];
 
-        int[] result = MoveZeros.MoveZerosTtEnd(input);
+        int[] result = MoveZeros.MoveZerosToEnd(input);
 
         Assert.Same(input, result);
         Assert.Equal(new int[] { 1, 3, 12, 0, 0 }, input);
@@ -202,6 +202,6 @@ public class MoveZerosTests
     [Fact]
     public void NullInput_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => MoveZeros.MoveZerosTtEnd(null!));
+        Assert.Throws<ArgumentNullException>(() => MoveZeros.MoveZerosToEnd(null!));
     }
 }
