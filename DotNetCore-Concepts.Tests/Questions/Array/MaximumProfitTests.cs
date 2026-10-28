@@ -77,7 +77,7 @@ public class MaximumProfitTests
 
     /// <summary>
     /// Tests a typical array of positive integers with varying values.
-    /// Min: 1, Max: 7 -> Profit: 7 - 1 = 6.
+    /// The best transaction buys at 1 and sells later at 6, for a profit of 5.
     /// </summary>
     [Fact]
     public void TypicalArray_PositiveIntegers_ReturnsDifferenceBetweenMaxAndMin()
@@ -133,7 +133,7 @@ public class MaximumProfitTests
 
     /// <summary>
     /// Tests an array with mixed positive, negative, and zero values.
-    /// Min: -25, Max: 50 -> Profit: 50 - (-25) = 75.
+    /// The -25 value occurs after 50, so the best valid transaction is -10 to 50.
     /// </summary>
     [Fact]
     public void MixedPositiveNegativeAndZero_ReturnsCorrectProfit()
@@ -142,7 +142,7 @@ public class MaximumProfitTests
 
         long result = MaximumProfit.FindMaximumProfit(input);
 
-        Assert.Equal(40L, result);
+        Assert.Equal(60L, result);
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class MaximumProfitTests
     /// </summary>
     [Theory]
     [InlineData(new int[] { 3, 10 }, 7)]
-    [InlineData(new int[] { 10, 3 }, 7)]
+    [InlineData(new int[] { 10, 3 }, 0)]
     [InlineData(new int[] { -5, 5 }, 10)]
     [InlineData(new int[] { 8, 8 }, 0)]
     public void TwoElementArrays_ReturnsExpectedProfit(int[] input, int expected)
