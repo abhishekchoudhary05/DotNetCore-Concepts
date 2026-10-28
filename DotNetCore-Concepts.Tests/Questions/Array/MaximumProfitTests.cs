@@ -5,7 +5,7 @@ namespace DotNetCore_Concepts.Tests.Questions.Array;
 
 /// <summary>
 /// Unit tests for <see cref="MaximumProfit"/> which computes the maximum profit
-/// defined as the difference between the maximum and minimum elements in an array.
+/// from one buy followed by one sell.
 /// </summary>
 public class MaximumProfitTests
 {
@@ -28,7 +28,7 @@ public class MaximumProfitTests
     {
         int[] input = [42];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(0, result);
     }
@@ -42,7 +42,7 @@ public class MaximumProfitTests
     {
         int[] input = [-15];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(0, result);
     }
@@ -56,7 +56,7 @@ public class MaximumProfitTests
     {
         int[] input = [0];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(0, result);
     }
@@ -70,7 +70,7 @@ public class MaximumProfitTests
     {
         int[] input = [5, 5, 5, 5, 5];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(0, result);
     }
@@ -84,9 +84,9 @@ public class MaximumProfitTests
     {
         int[] input = [7, 1, 5, 3, 6, 4];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
-        Assert.Equal(6, result);
+        Assert.Equal(5L, result);
     }
 
     /// <summary>
@@ -98,7 +98,7 @@ public class MaximumProfitTests
     {
         int[] input = [1, 2, 4, 8, 16];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(15, result);
     }
@@ -112,9 +112,9 @@ public class MaximumProfitTests
     {
         int[] input = [20, 15, 10, 5, 2];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
-        Assert.Equal(18, result);
+        Assert.Equal(0L, result);
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ public class MaximumProfitTests
     {
         int[] input = [-7, -3, -10, -2, -5];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(8, result);
     }
@@ -140,9 +140,9 @@ public class MaximumProfitTests
     {
         int[] input = [-10, 0, 50, -25, 15];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
-        Assert.Equal(75, result);
+        Assert.Equal(40L, result);
     }
 
     /// <summary>
@@ -154,7 +154,7 @@ public class MaximumProfitTests
     {
         int[] input = [2, 9, 5, 2, 9, 3];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(7, result);
     }
@@ -169,7 +169,7 @@ public class MaximumProfitTests
     [InlineData(new int[] { 8, 8 }, 0)]
     public void TwoElementArrays_ReturnsExpectedProfit(int[] input, int expected)
     {
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(expected, result);
     }
@@ -182,23 +182,22 @@ public class MaximumProfitTests
     {
         int[] input = [0, 0, 0, 0];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(0, result);
     }
 
     /// <summary>
-    /// Tests an empty array behavior.
-    /// When array is empty, loop does not execute; int.MinValue - int.MaxValue wraps to 1 in unchecked context.
+    /// An empty array has no possible buy/sell transaction, so profit is zero.
     /// </summary>
     [Fact]
-    public void EmptyArray_ReturnsOneDueToUncheckedIntegerOverflow()
+    public void EmptyArray_ReturnsZero()
     {
         int[] input = [];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
-        Assert.Equal(1, result);
+        Assert.Equal(0L, result);
     }
 
     /// <summary>
@@ -210,8 +209,18 @@ public class MaximumProfitTests
     {
         int[] input = [1_000_000, 500_000_000, 2_000_000_000];
 
-        int result = MaximumProfit.FindMaximumProfit(input);
+        long result = MaximumProfit.FindMaximumProfit(input);
 
         Assert.Equal(1_999_000_000, result);
+    }
+
+    [Fact]
+    public void FullIntRange_ReturnsProfitAsLong()
+    {
+        int[] input = [int.MinValue, int.MaxValue];
+
+        long result = MaximumProfit.FindMaximumProfit(input);
+
+        Assert.Equal(4_294_967_295L, result);
     }
 }

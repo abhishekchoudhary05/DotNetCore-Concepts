@@ -2,26 +2,32 @@
 {
     internal static class MaximumProfit
     {
-        internal static int FindMaximumProfit(int[] arr)
+        internal static long FindMaximumProfit(int[] arr)
         {
             ArgumentNullException.ThrowIfNull(arr, "Input array is null");
 
-            int minimum = int.MaxValue;
-            int maximum = int.MinValue;
-            for (int i = 0; i < arr.Length; i++)
+            if (arr.Length < 2)
             {
-                if (arr[i] > maximum)
+                return 0;
+            }
+
+            int minimumPrice = arr[0];
+            long maximumProfit = 0;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                long profit = (long)arr[i] - minimumPrice;
+                if (profit > maximumProfit)
                 {
-                    maximum = arr[i];
+                    maximumProfit = profit;
                 }
-                if (arr[i] < minimum)
+
+                if (arr[i] < minimumPrice)
                 {
-                    minimum = arr[i];
+                    minimumPrice = arr[i];
                 }
             }
 
-
-            return maximum - minimum;
+            return maximumProfit;
         }
     }
 }
