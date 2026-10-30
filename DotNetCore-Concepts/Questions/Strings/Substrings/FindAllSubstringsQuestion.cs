@@ -1,4 +1,4 @@
-namespace DotNetCore_Concepts.Questions.Substrings;
+namespace DotNetCore_Concepts.Questions.Strings.Substrings;
 
 /// <summary>Writes every contiguous substring of an input string.</summary>
 internal static class FindAllSubstringsQuestion

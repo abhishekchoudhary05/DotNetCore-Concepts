@@ -1,7 +1,7 @@
 using Xunit;
-using DotNetCore_Concepts.Questions.Substrings;
+using DotNetCore_Concepts.Questions.Strings.Substrings;
 
-namespace DotNetCore_Concepts.Tests.Questions.Substrings;
+namespace DotNetCore_Concepts.Tests.Questions.Strings.Substrings;
 
 /// <summary>
 /// Tests for FindAllSubstringsQuestion which prints all possible substrings of a string.
