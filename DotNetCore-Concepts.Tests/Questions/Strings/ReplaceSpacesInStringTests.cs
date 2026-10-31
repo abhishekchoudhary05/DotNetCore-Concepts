@@ -246,5 +246,115 @@ namespace DotNetCore_Concepts.Tests.Questions.Strings
         }
 
         #endregion
+
+        #region Approach 2 (In-Place) Tests
+
+        [Fact]
+        public void Approach2_String_NullInput_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                ReplaceSpacesInString.ReplaceSpacesInStringWithAnother_InPlace(null!, "%20"));
+        }
+
+        [Fact]
+        public void Approach2_String_NullReplaceWith_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                ReplaceSpacesInString.ReplaceSpacesInStringWithAnother_InPlace("hello world", null!));
+        }
+
+        [Theory]
+        [InlineData("", "%20")]
+        [InlineData("hello", "%20")]
+        [InlineData("a b", "~")]
+        [InlineData("hello world", "%20")]
+        [InlineData("hello  world", "%20")]
+        [InlineData(" hello world ", "-")]
+        [InlineData("   ", "X")]
+        [InlineData("hello world test", "")]
+        [InlineData("a b c d", ".")]
+        [InlineData("The quick brown fox jumps over the lazy dog", "%20")]
+        [InlineData("C# is a powerful language 2024!", "_")]
+        public void Approach2_String_ProducesSameResultAsApproach1(string input, string replaceWith)
+        {
+            string result1 = ReplaceSpacesInString.ReplaceSpacesInStringWithAnother(input, replaceWith);
+            string result2 = ReplaceSpacesInString.ReplaceSpacesInStringWithAnother_InPlace(input, replaceWith);
+            Assert.Equal(result1, result2);
+        }
+
+        [Fact]
+        public void Approach2_CharBuffer_NullCharacters_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                ReplaceSpacesInString.ReplaceSpacesInPlace(null!, 0, "%20"));
+        }
+
+        [Fact]
+        public void Approach2_CharBuffer_NullReplaceWith_ThrowsArgumentNullException()
+        {
+            char[] buffer = new char[10];
+            Assert.Throws<ArgumentNullException>(() =>
+                ReplaceSpacesInString.ReplaceSpacesInPlace(buffer, 0, null!));
+        }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(11)]
+        public void Approach2_CharBuffer_InvalidTrueLength_ThrowsArgumentOutOfRangeException(int trueLength)
+        {
+            char[] buffer = new char[10];
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                ReplaceSpacesInString.ReplaceSpacesInPlace(buffer, trueLength, "%20"));
+        }
+
+        [Fact]
+        public void Approach2_CharBuffer_InsufficientCapacity_ThrowsArgumentException()
+        {
+            char[] buffer = "hello world".ToCharArray(); // capacity 11, needs 13 for "%20"
+            Assert.Throws<ArgumentException>(() =>
+                ReplaceSpacesInString.ReplaceSpacesInPlace(buffer, 11, "%20"));
+        }
+
+        [Fact]
+        public void Approach2_CharBuffer_ClassicURLifyInPlace()
+        {
+            char[] buffer = "hello world    ".ToCharArray();
+            int newLength = ReplaceSpacesInString.ReplaceSpacesInPlace(buffer, 11, "%20");
+
+            Assert.Equal(13, newLength);
+            Assert.Equal("hello%20world", new string(buffer, 0, newLength));
+        }
+
+        [Fact]
+        public void Approach2_CharBuffer_EmptyReplaceWith_RemovesSpacesInPlace()
+        {
+            char[] buffer = "hello world test".ToCharArray();
+            int newLength = ReplaceSpacesInString.ReplaceSpacesInPlace(buffer, buffer.Length, "");
+
+            Assert.Equal(14, newLength);
+            Assert.Equal("helloworldtest", new string(buffer, 0, newLength));
+        }
+
+        [Fact]
+        public void Approach2_CharBuffer_NoSpaces_LeavesBufferUnchanged()
+        {
+            char[] buffer = "hello".ToCharArray();
+            int newLength = ReplaceSpacesInString.ReplaceSpacesInPlace(buffer, 5, "%20");
+
+            Assert.Equal(5, newLength);
+            Assert.Equal("hello", new string(buffer, 0, newLength));
+        }
+
+        [Fact]
+        public void Approach2_CharBuffer_SingleCharacterReplacement_WorksInPlace()
+        {
+            char[] buffer = "a b c".ToCharArray();
+            int newLength = ReplaceSpacesInString.ReplaceSpacesInPlace(buffer, 5, "_");
+
+            Assert.Equal(5, newLength);
+            Assert.Equal("a_b_c", new string(buffer, 0, newLength));
+        }
+
+        #endregion
     }
 }
