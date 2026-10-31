@@ -1,5 +1,3 @@
-using System;
-using Xunit;
 using DotNetCore_Concepts.Questions.Array;
 
 namespace DotNetCore_Concepts.Tests.Array
